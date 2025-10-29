@@ -1,4 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+
+import { getProducts } from "../../services/apiProducts";
+
+import { Table } from "./Table";
+
 function Products() {
+  const { error, data: products } = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
+
+  if (error) toast.error(error.message);
+
   return (
     <div className="mx-auto w-[90%] max-w-[1400px] py-4">
       <div className="flex justify-between">
@@ -7,11 +21,14 @@ function Products() {
           Add product
         </button>
       </div>
-      <div className="mt-4">
-        <p className="text-center">You have no products</p>
-      </div>
+      {products ? (
+        <Table products={products} />
+      ) : (
+        <div className="mt-40">
+          <p className="text-center font-bold">You have no products</p>
+        </div>
+      )}
     </div>
   );
 }
-
 export { Products };
