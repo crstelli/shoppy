@@ -13,10 +13,10 @@ function Form({ onSubmit }) {
       <h3 className="text-center text-lg font-bold">Add a product</h3>
 
       <Label>Name</Label>
-      <Input type="text" {...register("name")} />
+      <Input type="text" {...register("name", { required: true })} />
 
       <Label>Category</Label>
-      <Select {...register("category")}>
+      <Select {...register("category", { required: true })}>
         <option value="tech">Tech</option>
         <option value="clothes">Clothes</option>
         <option value="books">Books</option>
@@ -24,13 +24,13 @@ function Form({ onSubmit }) {
       </Select>
 
       <Label>Quantity</Label>
-      <Input type="number" {...register("quantity")} />
+      <Input type="number" {...register("quantity", { required: true })} />
 
       <Label>Status</Label>
-      <Select {...register("status")}>
+      <Select {...register("status", { required: true })}>
         <option value="active">Active</option>
         <option value="sold out">Sold Out</option>
-        <option value="hidden">Food</option>
+        <option value="hidden">Hidden</option>
       </Select>
 
       <Button classes={"mt-6"} type="submit">
