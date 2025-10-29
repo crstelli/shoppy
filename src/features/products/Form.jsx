@@ -17,6 +17,9 @@ function Form({ onSubmit }) {
 
       <Label>Category</Label>
       <Select {...register("category", { required: true })}>
+        <option disabled selected>
+          ...
+        </option>
         <option value="tech">Tech</option>
         <option value="clothes">Clothes</option>
         <option value="books">Books</option>
@@ -28,6 +31,9 @@ function Form({ onSubmit }) {
 
       <Label>Status</Label>
       <Select {...register("status", { required: true })}>
+        <option disabled selected>
+          ...
+        </option>
         <option value="active">Active</option>
         <option value="sold out">Sold Out</option>
         <option value="hidden">Hidden</option>

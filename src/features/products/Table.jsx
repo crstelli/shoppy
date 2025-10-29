@@ -11,12 +11,13 @@ function Table({ products }) {
 
 function TableHeader() {
   return (
-    <div className="mx-auto grid grid-cols-[100px_300px_200px_100px_100px] rounded-md bg-gray-500/80 px-10 py-4">
+    <div className="mx-auto grid grid-cols-[100px_300px_200px_100px_100px_200px] rounded-md bg-gray-500/80 px-10 py-4">
       <TableHeaderItem>ID</TableHeaderItem>
       <TableHeaderItem>Name</TableHeaderItem>
       <TableHeaderItem>Category</TableHeaderItem>
       <TableHeaderItem>Quantity</TableHeaderItem>
       <TableHeaderItem>Status</TableHeaderItem>
+      <TableHeaderItem>Actions</TableHeaderItem>
     </div>
   );
 }
@@ -27,12 +28,13 @@ function TableHeaderItem({ children }) {
 
 function TableRow({ item }) {
   return (
-    <div className="mx-auto grid grid-cols-[100px_300px_200px_100px_100px] px-10 py-4 odd:bg-gray-200">
+    <div className="mx-auto grid grid-cols-[100px_300px_200px_100px_100px_200px] px-10 py-4 odd:bg-gray-200">
       <span>{item.id}</span>
       <span>{item.name}</span>
       <span>{item.category}</span>
       <span>{item.quantity}</span>
       <Tag>{item.status}</Tag>
+      <span>Delete/Edit</span>
     </div>
   );
 }

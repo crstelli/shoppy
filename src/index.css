@@ -6,3 +6,7 @@ body,
 #root {
   @apply h-full w-full font-[Inter];
 }
+
+a.active {
+  @apply font-semibold text-gray-700;
+}
