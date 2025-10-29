@@ -6,3 +6,9 @@ export async function getProducts() {
   if (error) throw error;
   return products;
 }
+
+export async function addProduct(item) {
+  const { error } = await supabase.from("products").insert([item]);
+
+  if (error) throw error;
+}
