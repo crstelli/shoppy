@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { getProducts } from "../../services/apiProducts";
 import { addProduct as addProductApi } from "../../services/apiProducts";
 
-import { Table } from "./Table";
+import { Table } from "./table/Table";
 import { Form } from "./Form";
 
 import { Button } from "../../shared/components/Button";

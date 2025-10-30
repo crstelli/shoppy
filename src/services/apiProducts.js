@@ -12,3 +12,9 @@ export async function addProduct(item) {
 
   if (error) throw error;
 }
+
+export async function deleteProduct(item) {
+  const { error } = await supabase.from("products").delete().eq("id", item);
+
+  if (error) throw error;
+}
