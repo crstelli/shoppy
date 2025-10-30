@@ -1,43 +1,18 @@
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteProduct, editProduct } from "../../../services/apiProducts";
 
-import { Tag } from "./Tag";
-import { Trash, Pen } from "lucide-react";
-import toast from "react-hot-toast";
 import { EditForm } from "./EditForm";
+import { Tag } from "./Tag";
+
 import { Modal } from "../../../shared/components/modal/Modal";
+import { Trash, Pen } from "lucide-react";
+import { useRow } from "./useRow";
 
 function Row({ item }) {
   const [isEditing, setIsEditing] = useState(false);
-
-  const queryClient = useQueryClient();
-  const { mutate: handleDelete } = useMutation({
-    mutationFn: deleteProduct,
-    onSuccess: () => {
-      queryClient.invalidateQueries(["products"]);
-      toast.success("Product eliminated successfully.");
-    },
-  });
-
-  const { mutate: handleEdit } = useMutation({
-    mutationFn: editProduct,
-    onSuccess: () => {
-      queryClient.invalidateQueries(["products"]);
-      toast.success("Product edited successfully.");
-    },
-  });
-
-  function handleSubmitEdit(data, reset) {
-    const newItem = { ...item, ...data };
-
-    handleEdit(newItem);
-    reset();
-    setIsEditing(false);
-  }
+  const { handleDelete, handleSubmitEdit } = useRow(item.setIsEditing);
 
   return (
-    <div className="mx-auto grid grid-cols-[100px_300px_200px_100px_100px_200px] px-10 py-4 odd:bg-gray-200">
+    <div className="mx-auto grid w-[90%] max-w-[900px] grid-cols-[1fr_3fr_2fr_1fr_1fr_2fr] px-10 py-4 odd:bg-gray-200">
       <span>{item.id}</span>
       <span>{item.name}</span>
       <span>{item.category}</span>
