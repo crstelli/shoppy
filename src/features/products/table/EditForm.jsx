@@ -9,7 +9,7 @@ function EditForm({ onSubmit, item }) {
       onSubmit={handleSubmit((data) => onSubmit(data, reset))}
       classes={"col-span-full mx-auto"}
     >
-      <Form.Title>Edit Product #11</Form.Title>
+      <Form.Title>Edit Product #{item.id}</Form.Title>
 
       <Form.Label>Name</Form.Label>
       <Form.Input

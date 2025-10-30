@@ -1,8 +1,10 @@
+import { createPortal } from "react-dom";
+
 import { Overlay } from "./Overlay";
 import { X } from "lucide-react";
 
 function Modal({ children, onClose }) {
-  return (
+  return createPortal(
     <Overlay>
       <div className="relative rounded-md bg-gray-100 p-4">
         <X
@@ -12,7 +14,8 @@ function Modal({ children, onClose }) {
         />
         {children}
       </div>
-    </Overlay>
+    </Overlay>,
+    document.body,
   );
 }
 
