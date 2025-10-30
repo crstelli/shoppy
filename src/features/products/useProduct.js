@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteProduct, editProduct } from "../../../services/apiProducts";
+import { deleteProduct, editProduct } from "../../services/apiProducts";
 import toast from "react-hot-toast";
 
-function useRow(item, setIsEditing) {
+function useProduct(item, setIsEditing) {
   const queryClient = useQueryClient();
   const { mutate: handleDelete } = useMutation({
     mutationFn: deleteProduct,
@@ -39,4 +39,4 @@ function useRow(item, setIsEditing) {
   return { handleDelete, handleSubmitEdit };
 }
 
-export { useRow };
+export { useProduct };

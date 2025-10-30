@@ -7,6 +7,7 @@ import { Layout } from "./shared/components/Layout";
 
 import { Dashboard } from "./features/dashboard/Dashboard";
 import { Products } from "./features/products/Products";
+import { Categories } from "./features/categories/Categories";
 import { Orders } from "./features/orders/Orders";
 import { Settings } from "./features/settings/Settings";
 
@@ -24,6 +25,7 @@ export default function App() {
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/categories" element={<Categories />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/settings" element={<Settings />} />
           </Route>

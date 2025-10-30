@@ -19,6 +19,7 @@ function useProducts(setAddModal) {
     mutationFn: addProductApi,
     onSuccess: () => {
       toast.success("Product addedd succesfully.");
+      queryClient.invalidateQueries({ queryKey: ["products"] });
     },
 
     onError: (error) => {
@@ -29,7 +30,6 @@ function useProducts(setAddModal) {
   function handleAddProduct(data, reset) {
     addProduct(data);
 
-    queryClient.invalidateQueries({ queryKey: ["products"] });
     reset();
     setAddModal(false);
   }

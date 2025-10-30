@@ -1,5 +1,12 @@
 import { NavLink } from "react-router";
-import { LayoutDashboard, Barcode, Settings, LogOut, Logs } from "lucide-react";
+import {
+  LayoutDashboard,
+  Barcode,
+  Settings,
+  LogOut,
+  Logs,
+  LayoutList,
+} from "lucide-react";
 
 function Navigation() {
   return (
@@ -10,6 +17,7 @@ function Navigation() {
       <Item className="icon" icon={<Barcode size={30} strokeWidth={1.5} />}>
         Products
       </Item>
+      <Item icon={<LayoutList size={30} strokeWidth={1.5} />}>Categories</Item>
       <Item icon={<Logs size={30} strokeWidth={1.5} />}>Orders</Item>
       <Item icon={<Settings size={30} strokeWidth={1.5} />}>Settings</Item>
       <span className="mt-auto">

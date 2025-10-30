@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Form } from "../../../shared/components/form/Form";
+import { Form } from "../../shared/components/form/Form";
 
 function EditForm({ onSubmit, item }) {
   const { register, handleSubmit, reset } = useForm();
