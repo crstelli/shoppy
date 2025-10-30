@@ -18,6 +18,7 @@ function Product({ product, gridSize }) {
         <Table.Cell>{product.name}</Table.Cell>
         <Table.Cell>{product.category}</Table.Cell>
         <Table.Cell>{product.quantity}</Table.Cell>
+        <Table.Cell>{product.price}</Table.Cell>
         <Table.Cell>
           <Table.Tag>{product.status}</Table.Tag>
         </Table.Cell>

@@ -1,8 +1,15 @@
 import { useForm } from "react-hook-form";
 import { Form } from "../../shared/components/form/Form";
+import { useQuery } from "@tanstack/react-query";
+import { getCategories } from "../../services/apiCategories";
 
 function EditForm({ onSubmit, item }) {
   const { register, handleSubmit, reset } = useForm();
+
+  const { data: categories } = useQuery({
+    queryKey: ["categories"],
+    queryFn: getCategories,
+  });
 
   return (
     <Form
@@ -22,10 +29,11 @@ function EditForm({ onSubmit, item }) {
         defaultValue={item.category}
         {...register("category", { required: true })}
       >
-        <option value="tech">Tech</option>
-        <option value="clothes">Clothes</option>
-        <option value="books">Books</option>
-        <option value="food">Food</option>
+        {categories?.map((c) => (
+          <option key={c.id} value={c.name}>
+            {c.name}
+          </option>
+        ))}
       </Form.Select>
 
       <Form.Label>Quantity</Form.Label>
@@ -33,6 +41,19 @@ function EditForm({ onSubmit, item }) {
         defaultValue={item.quantity}
         type="number"
         {...register("quantity", { required: true, valueAsNumber: true })}
+      />
+
+      <Form.Label>Price</Form.Label>
+      <Form.Input
+        defaultValue={item.price}
+        type="number"
+        {...register("price", { required: true, valueAsNumber: true })}
+      />
+
+      <Form.Label>Description</Form.Label>
+      <Form.Input
+        defaultValue={item.description}
+        {...register("description", { required: true })}
       />
 
       <Form.Label>Status</Form.Label>

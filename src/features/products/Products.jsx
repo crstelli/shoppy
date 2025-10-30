@@ -12,7 +12,15 @@ function Products() {
   const [addModal, setAddModal] = useState(false);
   const { products, handleAddProduct } = useProducts(setAddModal);
 
-  const headers = ["ID", "Name", "Category", "Quantity", "Status", "Actions"];
+  const headers = [
+    "ID",
+    "Name",
+    "Category",
+    "Quantity",
+    "Price",
+    "Status",
+    "Actions",
+  ];
 
   return (
     <div className="mx-auto w-[90%] max-w-[1400px] overflow-auto py-4">

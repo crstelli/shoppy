@@ -1,8 +1,15 @@
 import { useForm } from "react-hook-form";
 import { Form } from "../../shared/components/form/Form";
+import { useQuery } from "@tanstack/react-query";
+import { getCategories } from "../../services/apiCategories";
 
 function AddForm({ onSubmit }) {
   const { register, handleSubmit, reset } = useForm();
+
+  const { data: categories } = useQuery({
+    queryKey: ["categories"],
+    queryFn: getCategories,
+  });
 
   return (
     <Form onSubmit={handleSubmit((data) => onSubmit(data, reset))}>
@@ -19,14 +26,21 @@ function AddForm({ onSubmit }) {
         <option disabled value="...">
           ...
         </option>
-        <option value="tech">Tech</option>
-        <option value="clothes">Clothes</option>
-        <option value="books">Books</option>
-        <option value="food">Food</option>
+        {categories?.map((c) => (
+          <option key={c.id} value={c.name}>
+            {c.name}
+          </option>
+        ))}
       </Form.Select>
 
       <Form.Label>Quantity</Form.Label>
       <Form.Input type="number" {...register("quantity", { required: true })} />
+
+      <Form.Label>Price</Form.Label>
+      <Form.Input type="number" {...register("price", { required: true })} />
+
+      <Form.Label>Description</Form.Label>
+      <Form.Input {...register("description", { required: true })} />
 
       <Form.Label>Status</Form.Label>
       <Form.Select
