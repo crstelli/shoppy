@@ -1,16 +1,15 @@
 import { supabase } from "../supabase";
 
 export async function getCategories() {
-  const { data: products, error } = await supabase
+  const { data: categories, error } = await supabase
     .from("categories")
     .select("*");
 
   if (error) throw error;
-  return products;
+  return categories;
 }
 
 export async function addCategory(data) {
-  console.log(data);
   const { error } = await supabase.from("categories").insert(data);
 
   if (error) throw error;
