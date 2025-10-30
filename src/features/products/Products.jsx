@@ -6,9 +6,10 @@ import { getProducts } from "../../services/apiProducts";
 import { addProduct as addProductApi } from "../../services/apiProducts";
 
 import { Table } from "./table/Table";
-import { Form } from "./Form";
+import { AddForm } from "./AddForm";
 
 import { Button } from "../../shared/components/Button";
+import { Modal } from "../../shared/components/modal/Modal";
 
 function Products() {
   const [showModal, setShowModal] = useState(false);
@@ -46,7 +47,11 @@ function Products() {
           <p className="text-center font-bold">You have no products</p>
         </div>
       )}
-      {showModal && <Form onSubmit={handleSubmit} />}
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <AddForm onSubmit={handleSubmit} />
+        </Modal>
+      )}
     </div>
   );
 }

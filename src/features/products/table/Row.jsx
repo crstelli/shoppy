@@ -6,6 +6,7 @@ import { Tag } from "./Tag";
 import { Trash, Pen } from "lucide-react";
 import toast from "react-hot-toast";
 import { EditForm } from "./EditForm";
+import { Modal } from "../../../shared/components/modal/Modal";
 
 function Row({ item }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -53,7 +54,11 @@ function Row({ item }) {
         />
       </div>
 
-      {isEditing && <EditForm onSubmit={handleSubmitEdit} item={item} />}
+      {isEditing && (
+        <Modal onClose={() => setIsEditing(false)}>
+          <EditForm onSubmit={handleSubmitEdit} item={item} />
+        </Modal>
+      )}
     </div>
   );
 }
