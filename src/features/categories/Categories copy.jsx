@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useCategories } from "./useCategories";
 
 import { Category } from "./Category";
-import { AddForm } from "./AddForm";
 
 import { Table } from "../../shared/components/table/Table";
 import { Button } from "../../shared/components/Button";
