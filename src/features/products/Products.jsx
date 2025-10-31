@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useProducts } from "./useProducts";
 import { useStatusFilter } from "./useStatusFilter";
-import { useSortBy } from "../../shared/useSortBy";
+import { useSortBy } from "../../shared/hooks/useSortBy";
+import { usePagination } from "../../shared/hooks/usePagination";
 
 import { AddForm } from "./AddForm";
 import { Product } from "./Product";
@@ -11,6 +12,9 @@ import { Table } from "../../shared/components/table/Table";
 import { Button } from "../../shared/components/Button";
 import { Modal } from "../../shared/components/modal/Modal";
 import { Menus } from "../../shared/components/menus/Menus";
+import { Pagination } from "../../shared/components/Pagination";
+
+import { PAGE_SIZE } from "../../shared/constansts";
 
 function Products() {
   const [addModal, setAddModal] = useState(false);
@@ -19,6 +23,7 @@ function Products() {
 
   const { getStatus } = useStatusFilter();
   const { getSortBy } = useSortBy();
+  const { getPage } = usePagination();
 
   const statusFilter = getStatus("all");
 
@@ -36,6 +41,11 @@ function Products() {
     direction === "asc" ? a[field] - b[field] : b[field] - a[field],
   );
 
+  const currPage = getPage();
+  const paginatedProducts = sortedProducts?.filter((p, i) => {
+    if (i >= (currPage - 1) * PAGE_SIZE && i < PAGE_SIZE * currPage) return p;
+  });
+
   return (
     <div className="mx-auto w-[90%] max-w-[1400px] overflow-auto py-4">
       <div className="flex justify-between">
@@ -46,7 +56,7 @@ function Products() {
         <Menus>
           <Table>
             <Table.Header headers={headers} />
-            {sortedProducts.map((p) => (
+            {paginatedProducts.map((p) => (
               <Product key={p.id} product={p} gridSize={headers.length} />
             ))}
           </Table>
@@ -56,6 +66,7 @@ function Products() {
           <p className="text-center font-bold">You have no products</p>
         </div>
       )}
+      <Pagination count={sortedProducts?.length} />
       {addModal && (
         <Modal onClose={() => setAddModal(false)}>
           <AddForm onSubmit={handleAddProduct} />

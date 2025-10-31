@@ -1,4 +1,4 @@
-import { useSortBy } from "../useSortBy";
+import { useSortBy } from "../hooks/useSortBy";
 
 function SortBy({ options }) {
   const { getSortBy, setSortBy } = useSortBy();

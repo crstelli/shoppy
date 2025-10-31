@@ -1,4 +1,4 @@
-import { useFilter } from "../../shared/useFilter";
+import { useFilter } from "../../shared/hooks/useFilter";
 
 function useStatusFilter() {
   const { getFilter, setFilter } = useFilter();
