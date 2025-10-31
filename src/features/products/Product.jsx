@@ -6,10 +6,12 @@ import { Table } from "../../shared/components/table/Table";
 import { Modal } from "../../shared/components/modal/Modal";
 import { Menus } from "../../shared/components/menus/Menus";
 
-import { PenBox, Trash } from "lucide-react";
+import { DeleteModal } from "../../shared/components/DeleteModal";
 
 function Product({ product, gridSize }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const { handleDelete, handleSubmitEdit } = useProduct(product, setIsEditing);
 
   return (
@@ -31,7 +33,7 @@ function Product({ product, gridSize }) {
               <Menus.Button onClick={() => setIsEditing(true)}>
                 Edit
               </Menus.Button>
-              <Menus.Button onClick={() => handleDelete(product.id)}>
+              <Menus.Button onClick={() => setIsDeleting(true)}>
                 Delete
               </Menus.Button>
             </Menus.List>
@@ -42,6 +44,13 @@ function Product({ product, gridSize }) {
         <Modal onClose={() => setIsEditing(false)}>
           <EditForm item={product} onSubmit={handleSubmitEdit} />
         </Modal>
+      )}
+
+      {isDeleting && (
+        <DeleteModal
+          onConfirm={() => handleDelete(product.id)}
+          onClose={() => setIsDeleting(false)}
+        />
       )}
     </>
   );
