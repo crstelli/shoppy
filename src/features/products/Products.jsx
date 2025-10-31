@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useProducts } from "./useProducts";
 import { useStatusFilter } from "./useStatusFilter";
+import { useSortBy } from "../../shared/useSortBy";
 
 import { AddForm } from "./AddForm";
 import { Product } from "./Product";
+import { TableOperations } from "./TableOperations";
 
 import { Table } from "../../shared/components/table/Table";
 import { Button } from "../../shared/components/Button";
 import { Modal } from "../../shared/components/modal/Modal";
 import { Menus } from "../../shared/components/menus/Menus";
-
-import { TableOperations } from "./TableOperations";
 
 function Products() {
   const [addModal, setAddModal] = useState(false);
@@ -18,11 +18,25 @@ function Products() {
   const headers = ["ID", "Name", "Category", "Quantity", "Price", "Status", ""];
 
   const { getStatus } = useStatusFilter();
+  const { getSortBy } = useSortBy();
+
   const statusFilter = getStatus("all");
 
-  const filteredProducts = products?.filter(
-    (p) => p.status.trim().toLowerCase().replace(" ", "") === statusFilter,
+  const filteredProducts =
+    statusFilter === "all"
+      ? products
+      : products?.filter(
+          (p) =>
+            p.status.trim().toLowerCase().replace(" ", "") === statusFilter,
+        );
+
+  const sortBy = getSortBy();
+  const [field, direction] = sortBy.split("-");
+  const sortedProducts = filteredProducts?.toSorted((a, b) =>
+    direction === "asc" ? a[field] - b[field] : b[field] - a[field],
   );
+
+  console.log(sortedProducts);
 
   return (
     <div className="mx-auto w-[90%] max-w-[1400px] overflow-auto py-4">
@@ -34,14 +48,9 @@ function Products() {
         <Menus>
           <Table>
             <Table.Header headers={headers} />
-            {statusFilter === "all"
-              ? products.map((p) => (
-                  <Product key={p.id} product={p} gridSize={headers.length} />
-                ))
-              : filteredProducts.map((p) => (
-                  <Product key={p.id} product={p} gridSize={headers.length} />
-                ))}
-            {}
+            {sortedProducts.map((p) => (
+              <Product key={p.id} product={p} gridSize={headers.length} />
+            ))}
           </Table>
         </Menus>
       ) : (

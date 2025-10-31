@@ -18,12 +18,13 @@ function Option({ children }) {
   const active = getStatus("all") === filterName;
 
   return (
-    <span
+    <button
+      disabled={active}
       onClick={() => setStatus(filterName)}
-      className={`cursor-pointer px-3 py-1 ${active && "bg-gray-700 text-gray-100"}`}
+      className={`cursor-pointer px-3 py-1 disabled:cursor-not-allowed ${active && "bg-gray-700 text-gray-100"}`}
     >
       {children}
-    </span>
+    </button>
   );
 }
 
