@@ -7,12 +7,13 @@ import { AddForm } from "./AddForm";
 import { Table } from "../../shared/components/table/Table";
 import { Button } from "../../shared/components/Button";
 import { Modal } from "../../shared/components/modal/Modal";
+import { Menus } from "../../shared/components/menus/Menus";
 
 function Categories() {
   const [addModal, setAddModal] = useState(false);
   const { categories, handleAddCategory } = useCategories(setAddModal);
 
-  const headers = ["ID", "Category", "Actions"];
+  const headers = ["ID", "Category", ""];
 
   return (
     <div className="mx-auto w-[90%] max-w-[1400px] overflow-auto py-4">
@@ -21,12 +22,14 @@ function Categories() {
         <Button onClick={() => setAddModal(true)}>Add Category</Button>
       </div>
       {categories?.length > 0 ? (
-        <Table>
-          <Table.Header headers={headers} />
-          {categories.map((c) => (
-            <Category key={c.id} category={c} gridSize={headers.length} />
-          ))}
-        </Table>
+        <Menus>
+          <Table>
+            <Table.Header headers={headers} />
+            {categories.map((c) => (
+              <Category key={c.id} category={c} gridSize={headers.length} />
+            ))}
+          </Table>
+        </Menus>
       ) : (
         <div className="mt-40">
           <p className="text-center font-bold">You have no categories</p>

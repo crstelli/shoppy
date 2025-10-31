@@ -15,7 +15,7 @@ function Row({ children, size }) {
       <div
         className="mx-auto grid w-[90%] max-w-[900px] rounded-md px-10 py-4"
         style={{
-          gridTemplateColumns: `repeat(${size}, 1fr)`,
+          gridTemplateColumns: `repeat(${size - 1}, 2fr) 3fr`,
         }}
       >
         {children}

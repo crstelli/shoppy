@@ -4,6 +4,7 @@ import { useProduct } from "./useProduct";
 import { EditForm } from "./EditForm";
 import { Table } from "../../shared/components/table/Table";
 import { Modal } from "../../shared/components/modal/Modal";
+import { Menus } from "../../shared/components/menus/Menus";
 
 import { PenBox, Trash } from "lucide-react";
 
@@ -22,15 +23,19 @@ function Product({ product, gridSize }) {
         <Table.Cell>
           <Table.Tag>{product.status}</Table.Tag>
         </Table.Cell>
-        <Table.Cell classes={"flex items-center mx-auto justify-center gap-4"}>
-          <Trash
-            onClick={() => handleDelete(product.id)}
-            className="cursor-pointer text-gray-800"
-          />
-          <PenBox
-            onClick={() => setIsEditing(true)}
-            className="cursor-pointer text-gray-800"
-          />
+        <Table.Cell>
+          <Menus.Menu>
+            <Menus.Toggle id={product.id} />
+
+            <Menus.List id={product.id}>
+              <Menus.Button onClick={() => setIsEditing(true)}>
+                Edit
+              </Menus.Button>
+              <Menus.Button onClick={() => handleDelete(product.id)}>
+                Delete
+              </Menus.Button>
+            </Menus.List>
+          </Menus.Menu>
         </Table.Cell>
       </Table.Row>
       {isEditing && (

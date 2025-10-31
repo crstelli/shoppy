@@ -5,8 +5,10 @@ import { Order } from "./Order";
 import { AddForm } from "./AddForm";
 
 import { Table } from "../../shared/components/table/Table";
-import { Button } from "../../shared/components/Button";
+import { Menus } from "../../shared/components/menus/Menus";
 import { Modal } from "../../shared/components/modal/Modal";
+
+import { Button } from "../../shared/components/Button";
 
 function Orders() {
   const [addModal, setAddModal] = useState(false);
@@ -21,12 +23,14 @@ function Orders() {
         <Button onClick={() => setAddModal(true)}>Create Order</Button>
       </div>
       {orders?.length > 0 ? (
-        <Table>
-          <Table.Header headers={headers} />
-          {orders.map((c) => (
-            <Order key={c.id} order={c} gridSize={headers.length} />
-          ))}
-        </Table>
+        <Menus>
+          <Table>
+            <Table.Header headers={headers} />
+            {orders.map((c) => (
+              <Order key={c.id} order={c} gridSize={headers.length} />
+            ))}
+          </Table>
+        </Menus>
       ) : (
         <div className="mt-40">
           <p className="text-center font-bold">You have no orders</p>
