@@ -9,3 +9,14 @@ export async function login({ email, password }) {
   if (error) throw error;
   return data;
 }
+
+// export async function signup
+
+// export async function changePassword
+
+export async function getUser() {
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error) throw error;
+  return data.user;
+}
