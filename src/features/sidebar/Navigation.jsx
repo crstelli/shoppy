@@ -6,6 +6,7 @@ import {
   LogOut,
   Logs,
   LayoutList,
+  Users,
 } from "lucide-react";
 
 function Navigation() {
@@ -19,6 +20,7 @@ function Navigation() {
       </Item>
       <Item icon={<LayoutList size={30} strokeWidth={1.5} />}>Categories</Item>
       <Item icon={<Logs size={30} strokeWidth={1.5} />}>Orders</Item>
+      <Item icon={<Users size={30} strokeWidth={1.5} />}>Users</Item>
       <Item icon={<Settings size={30} strokeWidth={1.5} />}>Settings</Item>
       <span className="mt-auto">
         <Item icon={<LogOut />}>Logout</Item>

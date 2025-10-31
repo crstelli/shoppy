@@ -10,7 +10,12 @@ export async function login({ email, password }) {
   return data;
 }
 
-// export async function signup
+export async function signup({ email, password }) {
+  const { data, error } = await supabase.auth.signUp({ email, password });
+
+  if (error) throw error;
+  return data;
+}
 
 // export async function changePassword
 

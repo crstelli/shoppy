@@ -10,7 +10,9 @@ import { Dashboard } from "./features/dashboard/Dashboard";
 import { Products } from "./features/products/Products";
 import { Categories } from "./features/categories/Categories";
 import { Orders } from "./features/orders/Orders";
+import { Users } from "./features/users/Users";
 import { Settings } from "./features/settings/Settings";
+
 import { ProtectedRoute } from "./shared/components/ProtectedRoute";
 
 const queryClient = new QueryClient({
@@ -36,6 +38,7 @@ export default function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/users" element={<Users />} />
             <Route path="/settings" element={<Settings />} />
           </Route>
         </Routes>

@@ -10,6 +10,8 @@ function useLogin() {
   const { mutate: handleLogin } = useMutation({
     mutationFn: ({ data }) => {
       const { email, password } = data;
+      if (!email || !password) return;
+
       return login({ email, password });
     },
     onSuccess: () => {
