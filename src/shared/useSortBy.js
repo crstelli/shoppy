@@ -4,7 +4,7 @@ function useSortBy() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   function getSortBy() {
-    return searchParams.get("sortBy") || "name-asc";
+    return searchParams.get("sortBy") || "quantity-asc";
   }
 
   function setSortBy(value) {

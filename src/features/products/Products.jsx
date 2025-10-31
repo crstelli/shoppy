@@ -36,8 +36,6 @@ function Products() {
     direction === "asc" ? a[field] - b[field] : b[field] - a[field],
   );
 
-  console.log(sortedProducts);
-
   return (
     <div className="mx-auto w-[90%] max-w-[1400px] overflow-auto py-4">
       <div className="flex justify-between">
