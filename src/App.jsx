@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 import { Layout } from "./shared/components/Layout";
 
+import { Login } from "./features/login/Login";
 import { Dashboard } from "./features/dashboard/Dashboard";
 import { Products } from "./features/products/Products";
 import { Categories } from "./features/categories/Categories";
@@ -21,8 +22,9 @@ export default function App() {
       <Toaster />
       <BrowserRouter>
         <Routes>
+          <Route index element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
           <Route element={<Layout />}>
-            <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
             <Route path="/categories" element={<Categories />} />
