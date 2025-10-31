@@ -1,24 +1,16 @@
-function Tag({ children }) {
-  if (children === "active")
-    return (
-      <span className="rounded-full bg-green-300 px-3 py-1 text-sm uppercase">
-        {children}
-      </span>
-    );
+function Tag({ children, color }) {
+  let bgColor;
 
-  if (children === "sold out")
-    return (
-      <span className="rounded-full bg-red-300 px-3 py-1 text-sm uppercase">
-        {children}
-      </span>
-    );
+  if (color === "green") bgColor = "bg-green-300";
+  if (color === "orange") bgColor = "bg-orange-300";
+  if (color === "red") bgColor = "bg-red-300";
+  if (color === "gray") bgColor = "bg-gray-300";
 
-  if (children === "hidden")
-    return (
-      <span className="rounded-full bg-orange-300 px-3 py-1 text-sm uppercase">
-        {children}
-      </span>
-    );
+  return (
+    <span className={`rounded-full px-3 py-1 text-sm uppercase ${bgColor}`}>
+      {children}
+    </span>
+  );
 }
 
 export { Tag };

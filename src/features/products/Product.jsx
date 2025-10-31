@@ -14,6 +14,11 @@ function Product({ product, gridSize }) {
 
   const { handleDelete, handleSubmitEdit } = useProduct(product, setIsEditing);
 
+  let tagColor;
+  if (product.status === "active") tagColor = "green";
+  if (product.status === "hidden") tagColor = "orange";
+  if (product.status === "sold out") tagColor = "red";
+
   return (
     <>
       <Table.Row key={product.id} size={gridSize}>
@@ -23,7 +28,7 @@ function Product({ product, gridSize }) {
         <Table.Cell>{product.quantity}</Table.Cell>
         <Table.Cell>{product.price}</Table.Cell>
         <Table.Cell>
-          <Table.Tag>{product.status}</Table.Tag>
+          <Table.Tag color={tagColor}>{product.status}</Table.Tag>
         </Table.Cell>
         <Table.Cell>
           <Menus.Menu>
