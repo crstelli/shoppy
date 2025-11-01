@@ -25,3 +25,10 @@ export async function getUser() {
   if (error) throw error;
   return data.user;
 }
+
+export async function logout() {
+  const { data, error } = await supabase.auth.signOut();
+
+  if (error) throw error;
+  return data;
+}
