@@ -4,6 +4,8 @@ import { useCategories } from "./useCategories";
 import { Category } from "./Category";
 import { AddForm } from "./AddForm";
 
+import { Pagination } from "../../shared/components/pagination/Pagination";
+
 import { Table } from "../../shared/components/table/Table";
 import { Button } from "../../shared/components/Button";
 import { Modal } from "../../shared/components/modal/Modal";
@@ -28,6 +30,9 @@ function Categories() {
             {categories.map((c) => (
               <Category key={c.id} category={c} gridSize={headers.length} />
             ))}
+            <Table.Footer>
+              <Pagination count={categories.length} />
+            </Table.Footer>
           </Table>
         </Menus>
       ) : (

@@ -1,6 +1,6 @@
-import { ButtonSecondary } from "./ButtonSecondary";
-import { usePagination } from "../hooks/usePagination";
-import { PAGE_SIZE } from "../constansts";
+import { ButtonSecondary } from "../ButtonSecondary";
+import { usePagination } from "./usePagination";
+import { PAGE_SIZE } from "../../constansts";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 

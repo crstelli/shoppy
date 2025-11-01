@@ -1,15 +1,15 @@
 import { useSearchParams } from "react-router";
 
-function useFilter() {
+function useFilter(name) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  function getFilter(value, defaultValue) {
-    const filter = searchParams.get(value) || defaultValue;
+  function getFilter() {
+    const filter = searchParams.get(name) || "all";
     return filter;
   }
 
-  function setFilter(filter, value) {
-    searchParams.set(filter, value);
+  function setFilter(value) {
+    searchParams.set(name, value);
     setSearchParams(searchParams);
   }
 
