@@ -8,7 +8,7 @@ import { Menus } from "../../shared/components/menus/Menus";
 
 import { DeleteModal } from "../../shared/components/DeleteModal";
 
-function Product({ product, gridSize }) {
+function Product({ product, gridCols }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -21,7 +21,7 @@ function Product({ product, gridSize }) {
 
   return (
     <>
-      <Table.Row key={product.id} size={gridSize}>
+      <Table.Row key={product.id} gridCols={gridCols}>
         <Table.Cell>{product.id}</Table.Cell>
         <Table.Cell>{product.name}</Table.Cell>
         <Table.Cell>{product.category}</Table.Cell>

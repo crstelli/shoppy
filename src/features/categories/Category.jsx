@@ -3,12 +3,12 @@ import { Table } from "../../shared/components/table/Table";
 
 import { Menus } from "../../shared/components/menus/Menus";
 
-function Category({ category, gridSize }) {
+function Category({ category, gridCols }) {
   const { handleDelete } = useCategory();
 
   return (
     <>
-      <Table.Row key={category.id} size={gridSize}>
+      <Table.Row key={category.id} gridCols={gridCols}>
         <Table.Cell>{category.id}</Table.Cell>
         <Table.Cell>{category.name}</Table.Cell>
         <Table.Cell>

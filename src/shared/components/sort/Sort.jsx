@@ -5,8 +5,12 @@ function Sort({ children }) {
   const { getSort, setSort } = useSort();
 
   return (
-    <div className="flex">
-      <select onChange={(e) => setSort(e.target.value)} value={getSort()}>
+    <div className="flex items-stretch">
+      <select
+        className="rounded-sm border border-gray-300 bg-gray-50 px-3 py-2 focus:border-emerald-500 focus:outline-none"
+        onChange={(e) => setSort(e.target.value)}
+        value={getSort()}
+      >
         {children}
       </select>
     </div>

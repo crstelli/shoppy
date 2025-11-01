@@ -1,5 +1,5 @@
 function Footer({ children }) {
-  return <div>{children}</div>;
+  return <div className="mt-8">{children}</div>;
 }
 
 export { Footer };

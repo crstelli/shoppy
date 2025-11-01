@@ -10,10 +10,8 @@ import { Modal } from "../../shared/components/modal/Modal";
 
 import { Button } from "../../shared/components/Button";
 
-// import { Sort } from "../../shared/components/sort/Sort";
 import { Filter } from "../../shared/components/filter/Filter";
 import { Pagination } from "../../shared/components/pagination/Pagination";
-// import { useSort } from "../../shared/components/sort/useSort";
 import { useFilter } from "../../shared/components/filter/useFilter";
 import { usePagination } from "../../shared/components/pagination/usePagination";
 import { PAGE_SIZE } from "../../shared/constansts";
@@ -22,7 +20,7 @@ function Orders() {
   const [addModal, setAddModal] = useState(false);
   const { orders, handleAddOrder } = useOrders(setAddModal);
 
-  const headers = ["ID", "Delivery", "Status", "Actions"]; // TODO: Sistemare
+  const sections = ["ID", "Delivery", "Status"]; // TODO: Sistemare
 
   const { getFilter: getStatus } = useFilter("status");
   const statusFilter = getStatus();
@@ -42,23 +40,28 @@ function Orders() {
   });
 
   return (
-    <div className="mx-auto w-[90%] max-w-[1400px] overflow-auto py-4">
+    <div className="mx-auto w-[90%] max-w-[1200px] overflow-auto py-4">
       {orders?.length > 0 ? (
         <Menus>
           <Table>
-            <Table.Title>Your Orders</Table.Title>
-            <Table.Operations>
-              <Filter name="status">
-                <Filter.Option>All</Filter.Option>
-                <Filter.Option>Received</Filter.Option>
-                <Filter.Option>Completed</Filter.Option>
-                <Filter.Option>Delivery</Filter.Option>
-              </Filter>
-            </Table.Operations>
-            <Table.Header headers={headers} />
-            {paginatedOrders.map((c) => (
-              <Order key={c.id} order={c} gridSize={headers.length} />
-            ))}
+            <Table.Header>
+              <Table.Title>Customers Orders</Table.Title>
+              <Table.Operations>
+                <Filter name="status">
+                  <Filter.Option>All</Filter.Option>
+                  <Filter.Option>Received</Filter.Option>
+                  <Filter.Option>Completed</Filter.Option>
+                  <Filter.Option>Delivery</Filter.Option>
+                </Filter>
+                <Button onClick={() => setAddModal(true)}>Create Order</Button>
+              </Table.Operations>
+            </Table.Header>
+            <Table.Content>
+              <Table.Section gridCols={"1fr 3fr 3fr 1fr"} sections={sections} />
+              {paginatedOrders.map((c) => (
+                <Order key={c.id} order={c} gridCols={"1fr 3fr 3fr 1fr"} />
+              ))}
+            </Table.Content>
             <Table.Footer>
               <Pagination count={paginatedOrders.length} />
             </Table.Footer>
@@ -69,8 +72,6 @@ function Orders() {
           <p className="text-center font-bold">You have no orders</p>
         </div>
       )}
-      <Button onClick={() => setAddModal(true)}>Create Order</Button>
-
       {addModal && (
         <Modal onClose={() => setAddModal(false)}>
           <AddForm onSubmit={handleAddOrder} />

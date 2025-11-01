@@ -1,12 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
 html,
 body,
 #root {
-  @apply h-full w-full font-[Inter];
+  @apply h-full w-full font-[Inter] text-gray-700 selection:bg-emerald-500 selection:text-gray-50;
 }
 
-a.active {
-  @apply font-semibold text-gray-700;
+.active #sidebar-icon {
+  @apply text-emerald-600;
+}
+
+.active #sidebar-text {
+  @apply font-bold text-gray-600;
 }

@@ -1,5 +1,5 @@
 function Label({ children }) {
-  return <label className="mt-2 text-lg">{children}</label>;
+  return <label className="mt-2 ml-2 font-light">{children}</label>;
 }
 
 export { Label };

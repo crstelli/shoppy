@@ -1,5 +1,5 @@
 function Operations({ children }) {
-  return <div className="flex justify-between">{children}</div>;
+  return <div className="flex gap-10">{children}</div>;
 }
 
 export { Operations };

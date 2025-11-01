@@ -1,18 +1,5 @@
-import { HeaderItem } from "./HeaderItem";
-
-function Header({ headers }) {
-  return (
-    <div
-      className="mx-auto grid w-[90%] max-w-[900px] rounded-md bg-gray-500/60 px-10 py-4"
-      style={{
-        gridTemplateColumns: `repeat(${headers.length - 1}, 2fr) 3fr`,
-      }}
-    >
-      {headers.map((el) => (
-        <HeaderItem key={el}>{el}</HeaderItem>
-      ))}
-    </div>
-  );
+function Header({ children }) {
+  return <div className="flex items-center justify-between">{children}</div>;
 }
 
 export { Header };

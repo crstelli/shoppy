@@ -19,7 +19,7 @@ function Categories() {
   const [addModal, setAddModal] = useState(false);
   const { categories, handleAddCategory } = useCategories(setAddModal);
 
-  const headers = ["ID", "Category", ""];
+  const sections = ["ID", "Category"];
 
   const sortOptions = [
     {
@@ -51,22 +51,27 @@ function Categories() {
   });
 
   return (
-    <div className="mx-auto w-[90%] max-w-[1400px] overflow-auto py-4">
+    <div className="mx-auto w-[90%] max-w-[1200px] overflow-auto py-4">
       {categories?.length > 0 ? (
         <Menus>
           <Table>
-            <Table.Title>Your Categories</Table.Title>
-            <Table.Operations>
-              <Sort>
-                {sortOptions.map((opt) => (
-                  <Sort.Option opt={opt} key={opt.value} />
-                ))}
-              </Sort>
-            </Table.Operations>
-            <Table.Header headers={headers} />
-            {paginatedCategories.map((c) => (
-              <Category key={c.id} category={c} gridSize={headers.length} />
-            ))}
+            <Table.Header>
+              <Table.Title>Product Categories</Table.Title>
+              <Table.Operations>
+                <Sort>
+                  {sortOptions.map((opt) => (
+                    <Sort.Option opt={opt} key={opt.value} />
+                  ))}
+                </Sort>
+                <Button onClick={() => setAddModal(true)}>Add Category</Button>
+              </Table.Operations>
+            </Table.Header>
+            <Table.Content>
+              <Table.Section gridCols={"1fr 2fr 1fr"} sections={sections} />
+              {paginatedCategories.map((c) => (
+                <Category key={c.id} category={c} gridCols={"1fr 2fr 1fr"} />
+              ))}
+            </Table.Content>
             <Table.Footer>
               <Pagination count={sortedCategories.length} />
             </Table.Footer>
@@ -82,7 +87,6 @@ function Categories() {
           <AddForm onSubmit={handleAddCategory} />
         </Modal>
       )}
-      <Button onClick={() => setAddModal(true)}>Add Category</Button>
     </div>
   );
 }

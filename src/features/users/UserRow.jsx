@@ -1,8 +1,8 @@
 import { Table } from "../../shared/components/table/Table";
 
-function UserRow({ user, gridSize }) {
+function UserRow({ user, gridCols }) {
   return (
-    <Table.Row size={gridSize}>
+    <Table.Row gridCols={gridCols}>
       <Table.Cell>{user.id}</Table.Cell>
       <Table.Cell>{user.email}</Table.Cell>
       <Table.Cell>{user.fullName}</Table.Cell>

@@ -5,10 +5,12 @@ import { Sidebar } from "../../features/sidebar/Sidebar";
 
 function Layout() {
   return (
-    <main className="grid h-full w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-4">
+    <main className="grid h-full w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr] bg-gray-50">
       <Sidebar />
       <Header />
-      <Outlet />
+      <div className="bg-gray-200/40 p-15">
+        <Outlet />
+      </div>
     </main>
   );
 }

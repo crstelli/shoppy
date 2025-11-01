@@ -9,7 +9,7 @@ function Form({ onSubmit, children, classes }) {
   return (
     <form
       onSubmit={onSubmit}
-      className={`flex w-[440px] flex-col rounded-md p-5 ${classes}`}
+      className={`flex w-full flex-col rounded-md p-5 ${classes}`}
     >
       {children}
     </form>

@@ -3,6 +3,8 @@ import { usePagination } from "./usePagination";
 import { PAGE_SIZE } from "../../constansts";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ButtonPrev } from "./ButtonPrev";
+import { ButtonNext } from "./ButtonNext";
 
 function Pagination({ count }) {
   const { getPage, setPage } = usePagination();
@@ -30,14 +32,8 @@ function Pagination({ count }) {
         results out of <span className="font-bold">{count}</span>.
       </p>
       <div className="flex gap-2">
-        <ButtonSecondary onClick={prevPage} classes="flex items-center gap-1">
-          <ChevronLeft className="-translate-y-[1.5px]" />
-          Previous
-        </ButtonSecondary>
-        <ButtonSecondary onClick={nextPage} classes="flex items-center gap-1">
-          Next
-          <ChevronRight className="-translate-y-[1.5px]" />
-        </ButtonSecondary>
+        <ButtonPrev onClick={prevPage} />
+        <ButtonNext onClick={nextPage} />
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ import { Navigation } from "./Navigation";
 
 function Sidebar() {
   return (
-    <div className="row-span-2 flex flex-col bg-gray-200/80 p-10">
-      <Logo />
+    <div className="row-span-2 flex min-w-[230px] flex-col bg-gray-50 p-10">
+      <Logo classes={"mx-auto"} />
       <Navigation />
     </div>
   );
