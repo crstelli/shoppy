@@ -32,3 +32,10 @@ export async function logout() {
   if (error) throw error;
   return data;
 }
+
+export async function getUserList() {
+  const { data, error } = await supabase.auth.admin.listUsers();
+
+  if (error) throw error;
+  return data;
+}

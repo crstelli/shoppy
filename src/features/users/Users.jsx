@@ -2,13 +2,14 @@ import { useForm } from "react-hook-form";
 import { useSignup } from "./useSignup";
 
 import { Form } from "../../shared/components/form/Form";
+import { UsersTable } from "./UsersTable";
 
 function Users() {
   const { register, handleSubmit, reset } = useForm();
   const { handleSignup } = useSignup();
 
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col items-center">
       <Form onSubmit={handleSubmit((data) => handleSignup({ data, reset }))}>
         <Form.Title>Create a new user</Form.Title>
 
@@ -29,6 +30,8 @@ function Users() {
 
         <Form.Submit classes={"mt-4"}>Create new user</Form.Submit>
       </Form>
+
+      <UsersTable />
     </div>
   );
 }
